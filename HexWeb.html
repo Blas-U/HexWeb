@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    s <input type="text" id="data" value = "50" placeholder="enter here">
+
+    <br><div id="output"></div>
+    <br><div id="b"></div>
+    <br><div id="a"></div>
+
+</body>
+    <script>
+        inputDiv = document.getElementById("data");
+        inputDiv.addEventListener("change", function(){
+            s = this.value;
+
+
+            x = Math.sin(Math.PI/3) * s
+            y = s/2
+            b = 2*s
+            a = 2*x
+            A = a * y + s * a
+            document.getElementById("output").innerHTML = "Area = " + A;
+            document.getElementById("b").innerHTML = "b = " + b;
+            document.getElementById("a").innerHTML = "a = " + a;
+        //     var grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+        // grd.addColorStop(0, "red");
+        // grd.addColorStop(1, "white");
+
+
+            hexgraph()
+        })
+
+        function hexgraph(){
+            s = document.getElementById("data").value;
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.clearRect(0,0 , 400, 400)
+            // Starting Point
+            ctx.moveTo(100, 200);
+            //Drawing the line
+            ctx.lineTo(150, 286);
+            ctx.lineTo(250, 286);
+            ctx.lineTo(300, 200);
+            ctx.lineTo(250, 113);
+            ctx.lineTo(150, 113);
+            ctx.lineTo(100, 200);
+            //Words
+            ctx.font = "10px Arial";
+            ctx.fillText(s, 275, 150);
+            ctx.stroke();
+                    // Fill with gradient
+            ctx.fillStyle = "rgba(0, 0, 200, .5)";
+            ctx.fillRect(10, 10, c.width, c.height);
+        }
+
+        hexgraph();
+
+    </script>
+
+</html>
